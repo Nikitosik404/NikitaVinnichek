@@ -41,15 +41,16 @@ public class SimpleTestPageObject extends TestBaseClass {
     @Test
     public void simpleTest() {
         //2 Navigate
-        homePage.open(driver);
+        driver.navigate().to("https://epam.github.io/JDI/index.html");
 
         //3 Assert Title
-        homePage.checkTitle(driver);
+        assertEquals(driver.getTitle(), "Home Page");
 
         //4 Login
         homePage.login("epam", "1234");
 
         //5
-        homePage.checkMainText();
+        WebElement mainTitle = driver.findElement(By.cssSelector("h3.main-title"));
+        assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES…");
     }
 }
