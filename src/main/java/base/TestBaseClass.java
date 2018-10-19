@@ -1,5 +1,6 @@
 package base;
 
+
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -9,7 +10,7 @@ import static java.lang.System.setProperty;
 public class TestBaseClass {
 
     private long time;
-
+    public static final String token = "@dwwd!@!@3@!ED!2d";
 
     @BeforeSuite(alwaysRun = true)
     public void beforeSuite() {
@@ -18,7 +19,7 @@ public class TestBaseClass {
     }
 
     @AfterSuite(alwaysRun = true)
-    public void afterSuite(){
-        System.out.println("Test framework worked  " + time);
+    public void afterSuite() {
+        System.out.println("Test framework worked: " + (currentTimeMillis() - time));
     }
 }

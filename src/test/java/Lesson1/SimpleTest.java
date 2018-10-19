@@ -32,7 +32,7 @@ public class SimpleTest {
         driver.findElement(By.cssSelector(".profile-photo")).click();
         driver.findElement(By.cssSelector("[id = 'Name']")).sendKeys("epam");
         driver.findElement(By.cssSelector("[id = 'Password']")).sendKeys("1234");
-        driver.findElement(By.cssSelector(".login [type = 'submit']")).click();
+        driver.findElement(By.cssSelector("[type = 'submit']")).click();
 
         WebElement mainTitle = driver.findElement(By.cssSelector("h3.main-title"));
         assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES…");

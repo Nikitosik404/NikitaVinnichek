@@ -1,32 +1,22 @@
 package Lesson2;
 
+import base.TestBaseClass;
+import dataProviders.DataProviders;
+import base.TestBaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 
-public class SimpleTestDataProvider {
+public class SimpleTestDataProvider extends TestBaseClass {
 
-    private WebDriver driver;
-
-    @DataProvider
-    public Object[][] dataProviderTest(){
-        return  new Object[][]{
-                {"String", 1},
-                {"String", 2},
-                {"String", 3}
-
-        };
-    }
-
-    @Test(dataProvider = "dataProviderTest")
-    public void simpleTest(String str, int num) {
+    @Test(dataProvider = "simpleDataProvider", dataProviderClass = DataProviders.class)
+    public void simpleTest(String s, int i) {
 
         //1 Open BR
         WebDriver driver = new ChromeDriver();
@@ -43,12 +33,14 @@ public class SimpleTestDataProvider {
         driver.findElement(By.cssSelector(".profile-photo")).click();
         driver.findElement(By.cssSelector("[id = 'Name']")).sendKeys("epam");
         driver.findElement(By.cssSelector("[id = 'Password']")).sendKeys("1234");
-        driver.findElement(By.cssSelector(".login [type = 'submit']")).click();
+        driver.findElement(By.cssSelector("[type = 'submit']")).click();
 
         WebElement mainTitle = driver.findElement(By.cssSelector("h3.main-title"));
         assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES…");
 
+        //5 Close BR
         driver.close();
-        System.out.println("Str " +  str + " num " + num);
+        System.out.println("String: " + s);
+        System.out.println("Integer: " + i);
     }
 }
