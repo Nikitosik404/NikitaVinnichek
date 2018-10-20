@@ -1,4 +1,4 @@
-package Lesson2;
+package lessons.lesson2;
 
 import base.TestBaseClass;
 import org.openqa.selenium.By;
@@ -13,16 +13,24 @@ import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 
-public class SimpleTestInvocationCount extends TestBaseClass {
+public class SimpleTest extends TestBaseClass {
 
-    @Test(invocationCount = 3, threadPoolSize = 3, timeOut = 0)
-    public void simpleTest() {
+    private WebDriver driver;
 
-        //1 Open BR
-        WebDriver driver = new ChromeDriver();
+    @BeforeMethod(alwaysRun = true)
+    public void beforeMethod() {
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+    }
 
+    @AfterMethod(alwaysRun = true)
+    public void afterMethod() {
+        driver.close();
+    }
+
+    @Test(groups = "Group1")
+    public void simpleTest() {
         //2 Navigate
         driver.navigate().to("https://epam.github.io/JDI/index.html");
 
@@ -37,8 +45,5 @@ public class SimpleTestInvocationCount extends TestBaseClass {
 
         WebElement mainTitle = driver.findElement(By.cssSelector("h3.main-title"));
         assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES…");
-
-        //5 Close BR
-        driver.close();
     }
 }

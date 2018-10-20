@@ -1,16 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Test Suite" verbose="1">
-    <test name="Simple Test">
-
-        <groups>
-            <run>
-                <include name="Group1" />
-            </run>
-        </groups>
+<suite name="Cucumber Test" verbose="">
+    <test name="Cucumber Test">
 
         <classes>
-            <class name="Lesson2.SimpleTest" />
+            <class name="runners.CucumberTestngRunner" />
         </classes>
 
     </test>
