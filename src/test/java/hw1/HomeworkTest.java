@@ -83,7 +83,10 @@ public class HomeworkTest {
         driver.switchTo().window(mainHandler);
 
         //13 Assert a text of the sub header
-        assertEquals("JDI GITHUB", driver.findElement(By.cssSelector("a[href*='github.com/']")).getText());
+        assertEquals(driver.findElement(By.cssSelector("[class='text-center']")).getText(), "JDI GITHUB");
+
+        //14 Assert that JDI GITHUB is a link and has a proper URL
+        assertEquals(driver.findElement(By.cssSelector("[class='text-center']>a")).getAttribute("href"), "https://github.com/epam/JDI");
 
         //15 Assert that there is Left Section
         assertTrue(driver.findElement(By.cssSelector("[name='navigation-sidebar']")).isDisplayed());

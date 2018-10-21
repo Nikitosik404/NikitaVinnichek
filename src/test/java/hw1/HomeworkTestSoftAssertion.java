@@ -45,10 +45,10 @@ public class HomeworkTestSoftAssertion {
         softAssert.assertEquals(driver.getTitle(), "Home Page");
 
         //6 Assert that there are 4 items on the header section are displayed and they have proper texts
-        softAssert.assertEquals("HOME", driver.findElement(By.cssSelector(".uui-navigation a[href*='index']")).getText());
-        softAssert.assertEquals("CONTACT FORM", driver.findElement(By.cssSelector(".uui-navigation a[href*='contacts']")).getText());
-        softAssert.assertEquals("SERVICE", driver.findElement(By.cssSelector(".uui-navigation .dropdown-toggle")).getText());
-        softAssert.assertEquals("METALS & COLORS", driver.findElement(By.cssSelector(".uui-navigation a[href*='metals-colors']")).getText());
+        softAssert.assertEquals(driver.findElement(By.cssSelector(".uui-navigation a[href*='index']")).getText(), "HOME");
+        softAssert.assertEquals(driver.findElement(By.cssSelector(".uui-navigation a[href*='contacts']")).getText(), "CONTACT FORM");
+        softAssert.assertEquals(driver.findElement(By.cssSelector(".uui-navigation .dropdown-toggle")).getText(), "SERVICE");
+        softAssert.assertEquals(driver.findElement(By.cssSelector(".uui-navigation a[href*='metals-colors']")).getText(), "METALS & COLORS");
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> imagesItems = driver.findElements(By.cssSelector(".benefit-icon"));
@@ -66,7 +66,7 @@ public class HomeworkTestSoftAssertion {
         softAssert.assertEquals(PropperText.BASE.text, textItems.get(3).getText());
 
         //9 Assert a text of the main header
-        softAssert.assertEquals("EPAM FRAMEWORK WISHES…", driver.findElement(By.cssSelector(".main-title")).getText());
+        softAssert.assertEquals(driver.findElement(By.cssSelector(".main-title")).getText(), "EPAM FRAMEWORK WISHES…");
         String mainTxt = "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
         softAssert.assertEquals( driver.findElement(By.cssSelector(".main-txt")).getText(), mainTxt);
 
@@ -83,7 +83,10 @@ public class HomeworkTestSoftAssertion {
         driver.switchTo().window(mainHandler);
 
         //13 Assert a text of the sub header
-        softAssert.assertEquals("JDI GITHUB", driver.findElement(By.cssSelector("a[href*='github.com/']")).getText());
+        softAssert.assertEquals( driver.findElement(By.cssSelector("[class='text-center']")).getText(), "JDI GITHUB");
+
+        //14 Assert that JDI GITHUB is a link and has a proper URL
+        softAssert.assertEquals(driver.findElement(By.cssSelector("[class='text-center']>a")).getAttribute("href"), "https://github.com/epam/JDI");
 
         //15 Assert that there is Left Section
         softAssert.assertTrue(driver.findElement(By.cssSelector("[name='navigation-sidebar']")).isDisplayed());
