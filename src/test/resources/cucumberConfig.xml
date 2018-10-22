@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Cucumber Test" verbose="">
-    <test name="Cucumber Test">
+<suite name="Cucumber Suite">
+    <test name="Cucumber Tests">
 
         <classes>
             <class name="runners.CucumberTestngRunner" />

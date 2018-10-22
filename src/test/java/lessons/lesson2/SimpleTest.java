@@ -9,9 +9,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class SimpleTest extends TestBaseClass {
 
@@ -29,7 +31,7 @@ public class SimpleTest extends TestBaseClass {
         driver.close();
     }
 
-    @Test(groups = "Group1")
+    @Test
     public void simpleTest() {
         //2 Navigate
         driver.navigate().to("https://epam.github.io/JDI/index.html");
@@ -43,7 +45,10 @@ public class SimpleTest extends TestBaseClass {
         driver.findElement(By.cssSelector("[id = 'Password']")).sendKeys("1234");
         driver.findElement(By.cssSelector("[type = 'submit']")).click();
 
-        WebElement mainTitle = driver.findElement(By.cssSelector("h3.main-title"));
-        assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES…");
+        List<WebElement> imagesItems = driver.findElements(By.cssSelector(".benefit-icon"));
+        assertEquals(4, imagesItems.size());
+        for (WebElement item : imagesItems) {
+            assertTrue(item.isDisplayed());
+        }
     }
 }

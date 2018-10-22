@@ -51,6 +51,6 @@ public class SimpleTestPageObject extends TestBaseClass {
 
         //5
         WebElement mainTitle = driver.findElement(By.cssSelector("h3.main-title"));
-        assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES…");
+        assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES\u2026");
     }
 }

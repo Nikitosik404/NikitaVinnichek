@@ -1,12 +1,10 @@
 package pageObjects;
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Selenide.open;
-import static org.testng.Assert.assertEquals;
 
 public class HomePageSelenide {
 
@@ -22,15 +20,17 @@ public class HomePageSelenide {
     @FindBy(css = "[type = 'submit']")
     private SelenideElement submit;
 
-    @FindBy(css = "")
+    @FindBy(css = "h3.main-title")
     private SelenideElement mainText;
 
     //================================methods===================================
 
+    @Step("Open JDI Test Aplication - Home Page")
     public void openPage() {
         open("https://epam.github.io/JDI/index.html");
     }
 
+    @Step
     public void login(String name, String passwd) {
         profileButton.click();
         login.sendKeys(name);
@@ -38,13 +38,4 @@ public class HomePageSelenide {
         submit.click();
     }
 
-    //================================checks===================================
-
-    public void checkTitle(WebDriver driver) {
-        assertEquals(driver, "");
-    }
-
-    public void checkMainText() {
-        assertEquals(mainText.getText(), "");
-    }
 }

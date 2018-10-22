@@ -1,20 +1,17 @@
 package pageObjects;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.testng.Assert.assertEquals;
 
 public class HomePageSelenideCucumber {
-
-    public HomePageSelenideCucumber() {
-        page(this);
-    }
 
     @FindBy(css = ".profile-photo")
     private SelenideElement profileButton;
@@ -28,8 +25,12 @@ public class HomePageSelenideCucumber {
     @FindBy(css = "[type = 'submit']")
     private SelenideElement submit;
 
-    @FindBy(css = "")
+    @FindBy(css = "h3.main-title")
     private SelenideElement mainText;
+
+    public HomePageSelenideCucumber() {
+        page(this);
+    }
 
     //================================methods===================================
     @When("I'm on the Home Page")
@@ -37,7 +38,7 @@ public class HomePageSelenideCucumber {
         open("https://epam.github.io/JDI/index.html");
     }
 
-    @When("^I login as user (.+) with password (.+)")
+    @When("I login as user (.+) with password (.+)")
     public void login(String name, String passwd) {
         profileButton.click();
         login.sendKeys(name);
@@ -47,18 +48,13 @@ public class HomePageSelenideCucumber {
 
     //================================checks===================================
 
-    @Then("^The browser title is Home Page$")
-    public void checkTitle(WebDriver driver) {
-        assertEquals(driver, "");
+    @Then("The browser title is Home Page$")
+    public void checkTitle() {
+        assertEquals(getWebDriver().getTitle(), "Home Page");
     }
 
     @Then("The user icon is displayed on the header")
     public void checkUserIcon() {
-
+        profileButton.shouldBe(Condition.visible);
     }
-
-    public void checkMainText() {
-        assertEquals(mainText.getText(), "");
-    }
-
 }

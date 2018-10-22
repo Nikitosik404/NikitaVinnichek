@@ -35,7 +35,7 @@ public class SimpleTest {
         driver.findElement(By.cssSelector("[type = 'submit']")).click();
 
         WebElement mainTitle = driver.findElement(By.cssSelector("h3.main-title"));
-        assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES…");
+        assertEquals(mainTitle.getText(), "EPAM FRAMEWORK WISHES\u2023");
 
         driver.close();
     }
