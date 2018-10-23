@@ -1,5 +1,6 @@
-package hw1;
+package hw3;
 
+import base.TestBaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +16,7 @@ import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class HomeworkTest {
+public class HomeworkTestPageObject extends TestBaseClass {
 
     @Test
     public void EpamPageTest() {

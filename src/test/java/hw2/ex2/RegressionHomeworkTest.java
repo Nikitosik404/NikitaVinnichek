@@ -1,7 +1,6 @@
 package hw2.ex2;
 
 import base.TestBaseClass;
-import enums.PropperText;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +10,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static enums.ProperText.ProperText;
 import static org.testng.Assert.assertEquals;
 
 public class RegressionHomeworkTest extends TestBaseClass {
@@ -29,10 +29,11 @@ public class RegressionHomeworkTest extends TestBaseClass {
         //3 Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> textItems = driver.findElements(By.cssSelector(".benefit-txt"));
         assertEquals(4, textItems.size());
-        assertEquals(PropperText.PRACTICE.text, textItems.get(0).getText());
-        assertEquals(PropperText.CUSTOM.text, textItems.get(1).getText());
-        assertEquals(PropperText.MULTI.text, textItems.get(2).getText());
-        assertEquals(PropperText.BASE.text, textItems.get(3).getText());
+        assertEquals(textItems.size(), 4);
+        assertEquals(textItems.get(0).getText(), ProperText.PRACTICE);
+        assertEquals(textItems.get(1).getText(), ProperText.CUSTOM);
+        assertEquals(textItems.get(2).getText(), ProperText.MULTI);
+        assertEquals(textItems.get(3).getText(), ProperText.BASE);
 
         //4 Close BR
         driver.close();
@@ -51,11 +52,10 @@ public class RegressionHomeworkTest extends TestBaseClass {
 
         //3 Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> textItems = driver.findElements(By.cssSelector(".benefit-txt"));
-        assertEquals(4, textItems.size());
-        assertEquals(PropperText.PRACTICE.text, textItems.get(0).getText());
-        assertEquals(PropperText.CUSTOM.text, textItems.get(1).getText());
-        assertEquals(PropperText.MULTI.text, textItems.get(2).getText());
-        assertEquals(PropperText.BASE.text, textItems.get(3).getText());
+        assertEquals(textItems.get(0).getText(), ProperText.PRACTICE);
+        assertEquals(textItems.get(1).getText(), ProperText.CUSTOM);
+        assertEquals(textItems.get(2).getText(), ProperText.MULTI);
+        assertEquals(textItems.get(3).getText(), ProperText.BASE);
 
         //4 Close BR
         driver.close();
@@ -74,11 +74,11 @@ public class RegressionHomeworkTest extends TestBaseClass {
 
         //3 Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> textItems = driver.findElements(By.cssSelector(".benefit-txt"));
-        assertEquals(4, textItems.size());
-        assertEquals(PropperText.PRACTICE.text, textItems.get(0).getText());
-        assertEquals(PropperText.CUSTOM.text, textItems.get(1).getText());
-        assertEquals(PropperText.MULTI.text, textItems.get(2).getText());
-        assertEquals(PropperText.BASE.text, textItems.get(3).getText());
+        assertEquals(textItems.size(), 4);
+        assertEquals(textItems.get(0).getText(), ProperText.PRACTICE);
+        assertEquals(textItems.get(1).getText(), ProperText.CUSTOM);
+        assertEquals(textItems.get(2).getText(), ProperText.MULTI);
+        assertEquals(textItems.get(3).getText(), ProperText.BASE);
 
         //4 Close BR
         driver.close();

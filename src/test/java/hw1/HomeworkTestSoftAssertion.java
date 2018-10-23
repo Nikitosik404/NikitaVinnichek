@@ -1,6 +1,5 @@
 package hw1;
 
-import enums.PropperText;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +10,7 @@ import org.testng.asserts.SoftAssert;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static enums.ProperText.ProperText;
 import static enums.Users.PITER_CHALOVSKII;
 import static java.lang.System.setProperty;
 
@@ -45,6 +45,14 @@ public class HomeworkTestSoftAssertion {
         softAssert.assertEquals(driver.getTitle(), "Home Page");
 
         //6 Assert that there are 4 items on the header section are displayed and they have proper texts
+
+        //6.1 Assertion that 4 items are displayed
+        softAssert.assertTrue(driver.findElement(By.cssSelector(".uui-navigation a[href*='index']")).isDisplayed());
+        softAssert.assertTrue(driver.findElement(By.cssSelector(".uui-navigation a[href*='contacts']")).isDisplayed());
+        softAssert.assertTrue(driver.findElement(By.cssSelector(".uui-navigation .dropdown-toggle")).isDisplayed());
+        softAssert.assertTrue(driver.findElement(By.cssSelector(".uui-navigation a[href*='metals-colors']")).isDisplayed());
+
+        //6.2 Assertion that 4 items have proper texts
         softAssert.assertEquals(driver.findElement(By.cssSelector(".uui-navigation a[href*='index']")).getText(), "HOME");
         softAssert.assertEquals(driver.findElement(By.cssSelector(".uui-navigation a[href*='contacts']")).getText(), "CONTACT FORM");
         softAssert.assertEquals(driver.findElement(By.cssSelector(".uui-navigation .dropdown-toggle")).getText(), "SERVICE");
@@ -52,23 +60,23 @@ public class HomeworkTestSoftAssertion {
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> imagesItems = driver.findElements(By.cssSelector(".benefit-icon"));
-        softAssert.assertEquals(4, imagesItems.size());
+        softAssert.assertEquals(imagesItems.size(), 4);
         for (WebElement item : imagesItems) {
-            softAssert.assertTrue(item.isDisplayed());
+            softAssert. assertTrue(item.isDisplayed());
         }
 
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> textItems = driver.findElements(By.cssSelector(".benefit-txt"));
-        softAssert.assertEquals(4, textItems.size());
-        softAssert.assertEquals(PropperText.PRACTICE.text, textItems.get(0).getText());
-        softAssert.assertEquals(PropperText.CUSTOM.text, textItems.get(1).getText());
-        softAssert.assertEquals(PropperText.MULTI.text, textItems.get(2).getText());
-        softAssert.assertEquals(PropperText.BASE.text, textItems.get(3).getText());
+        softAssert.assertEquals(textItems.size(), 4);
+        softAssert.assertEquals(textItems.get(0).getText(), ProperText.PRACTICE);
+        softAssert.assertEquals(textItems.get(1).getText(), ProperText.CUSTOM);
+        softAssert.assertEquals(textItems.get(2).getText(), ProperText.MULTI);
+        softAssert.assertEquals(textItems.get(3).getText(), ProperText.BASE);
 
         //9 Assert a text of the main header
         softAssert.assertEquals(driver.findElement(By.cssSelector(".main-title")).getText(), "EPAM FRAMEWORK WISHES…");
         String mainTxt = "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.";
-        softAssert.assertEquals( driver.findElement(By.cssSelector(".main-txt")).getText(), mainTxt);
+        softAssert.assertEquals(driver.findElement(By.cssSelector(".main-txt")).getText(), mainTxt);
 
 
         //10 Assert that there is the iframe in the center of page
@@ -83,7 +91,7 @@ public class HomeworkTestSoftAssertion {
         driver.switchTo().window(mainHandler);
 
         //13 Assert a text of the sub header
-        softAssert.assertEquals( driver.findElement(By.cssSelector("[class='text-center']")).getText(), "JDI GITHUB");
+        softAssert.assertEquals(driver.findElement(By.cssSelector("[class='text-center']")).getText(), "JDI GITHUB");
 
         //14 Assert that JDI GITHUB is a link and has a proper URL
         softAssert.assertEquals(driver.findElement(By.cssSelector("[class='text-center']>a")).getAttribute("href"), "https://github.com/epam/JDI");

@@ -28,8 +28,8 @@ public class HomeworkTestDataProvider extends TestBaseClass {
 
         //3 Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> textItems = driver.findElements(By.cssSelector(".benefit-txt"));
-        assertEquals(4, textItems.size());
-        assertEquals(propperText, textItems.get(numberText).getText());
+        assertEquals(textItems.size(), 4);
+        assertEquals(textItems.get(numberText).getText(), propperText);
 
         //4 Close BR
         driver.close();
