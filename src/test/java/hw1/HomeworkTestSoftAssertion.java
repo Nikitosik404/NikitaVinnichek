@@ -10,7 +10,7 @@ import org.testng.asserts.SoftAssert;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static enums.ProperText.ProperText;
+import static enums.ProperText.*;
 import static enums.Users.PITER_CHALOVSKII;
 import static java.lang.System.setProperty;
 
@@ -68,10 +68,10 @@ public class HomeworkTestSoftAssertion {
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> textItems = driver.findElements(By.cssSelector(".benefit-txt"));
         softAssert.assertEquals(textItems.size(), 4);
-        softAssert.assertEquals(textItems.get(0).getText(), ProperText.PRACTICE);
-        softAssert.assertEquals(textItems.get(1).getText(), ProperText.CUSTOM);
-        softAssert.assertEquals(textItems.get(2).getText(), ProperText.MULTI);
-        softAssert.assertEquals(textItems.get(3).getText(), ProperText.BASE);
+        softAssert.assertEquals(textItems.get(0).getText(), PRACTICE.text);
+        softAssert.assertEquals(textItems.get(1).getText(), CUSTOM.text);
+        softAssert.assertEquals(textItems.get(2).getText(), MULTI.text);
+        softAssert.assertEquals(textItems.get(3).getText(), BASE.text);
 
         //9 Assert a text of the main header
         softAssert.assertEquals(driver.findElement(By.cssSelector(".main-title")).getText(), "EPAM FRAMEWORK WISHES…");

@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static enums.ProperText.ProperText;
+import static enums.ProperText.*;
 import static enums.Users.PITER_CHALOVSKII;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -66,10 +66,10 @@ public class SmokeAndRegressionHomeworkTest extends TestBaseClass {
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> textItems = driver.findElements(By.cssSelector(".benefit-txt"));
         assertEquals(textItems.size(), 4);
-        assertEquals(textItems.get(0).getText(), ProperText.PRACTICE);
-        assertEquals(textItems.get(1).getText(), ProperText.CUSTOM);
-        assertEquals(textItems.get(2).getText(), ProperText.MULTI);
-        assertEquals(textItems.get(3).getText(), ProperText.BASE);
+        assertEquals(textItems.get(0).getText(), PRACTICE.text);
+        assertEquals(textItems.get(1).getText(), CUSTOM.text);
+        assertEquals(textItems.get(2).getText(), MULTI.text);
+        assertEquals(textItems.get(3).getText(), BASE.text);
 
         //9 Assert a text of the main header
         assertEquals(driver.findElement(By.cssSelector(".main-title")).getText(), "EPAM FRAMEWORK WISHES…");
@@ -153,10 +153,10 @@ public class SmokeAndRegressionHomeworkTest extends TestBaseClass {
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> textItems = driver.findElements(By.cssSelector(".benefit-txt"));
         assertEquals(textItems.size(), 4);
-        assertEquals(textItems.get(0).getText(), ProperText.PRACTICE);
-        assertEquals(textItems.get(1).getText(), ProperText.CUSTOM);
-        assertEquals(textItems.get(2).getText(), ProperText.MULTI);
-        assertEquals(textItems.get(3).getText(), ProperText.BASE);
+        assertEquals(textItems.get(0).getText(), PRACTICE.text);
+        assertEquals(textItems.get(1).getText(), CUSTOM.text);
+        assertEquals(textItems.get(2).getText(), MULTI.text);
+        assertEquals(textItems.get(3).getText(), BASE.text);
 
         //9 Assert a text of the main header
         assertEquals(driver.findElement(By.cssSelector(".main-title")).getText(), "EPAM FRAMEWORK WISHES…");
@@ -240,10 +240,10 @@ public class SmokeAndRegressionHomeworkTest extends TestBaseClass {
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> textItems = driver.findElements(By.cssSelector(".benefit-txt"));
         assertEquals(textItems.size(), 4);
-        assertEquals(textItems.get(0).getText(), ProperText.PRACTICE);
-        assertEquals(textItems.get(1).getText(), ProperText.CUSTOM);
-        assertEquals(textItems.get(2).getText(), ProperText.MULTI);
-        assertEquals(textItems.get(3).getText(), ProperText.BASE);
+        assertEquals(textItems.get(0).getText(), PRACTICE.text);
+        assertEquals(textItems.get(1).getText(), CUSTOM.text);
+        assertEquals(textItems.get(2).getText(), MULTI.text);
+        assertEquals(textItems.get(3).getText(), BASE.text);
 
         //9 Assert a text of the main header
         assertEquals(driver.findElement(By.cssSelector(".main-title")).getText(), "EPAM FRAMEWORK WISHES…");

@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static enums.ProperText.ProperText;
+import static enums.ProperText.*;
 import static enums.Users.PITER_CHALOVSKII;
 import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
@@ -32,6 +32,7 @@ public class HomeworkTestDataProviderWithAnnotation {
     @BeforeMethod(alwaysRun = true)
     public void beforeMethod() {
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -44,16 +45,10 @@ public class HomeworkTestDataProviderWithAnnotation {
         driver.close();
     }
 
-    @AfterSuite(alwaysRun = true)
-    public void afterSuite() {
-        System.out.println(System.currentTimeMillis());
-    }
-
     @Test
     public void SimpleTest() {
 
         //1 Open website
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.navigate().to("https://epam.github.io/JDI/index.html");
 
         //2 Assert Browser title
@@ -96,10 +91,10 @@ public class HomeworkTestDataProviderWithAnnotation {
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> textItems = driver.findElements(By.cssSelector(".benefit-txt"));
         assertEquals(textItems.size(), 4);
-        assertEquals(textItems.get(0).getText(), ProperText.PRACTICE);
-        assertEquals(textItems.get(1).getText(), ProperText.CUSTOM);
-        assertEquals(textItems.get(2).getText(), ProperText.MULTI);
-        assertEquals(textItems.get(3).getText(), ProperText.BASE);
+        assertEquals(textItems.get(0).getText(), PRACTICE.text);
+        assertEquals(textItems.get(1).getText(), CUSTOM.text);
+        assertEquals(textItems.get(2).getText(), MULTI.text);
+        assertEquals(textItems.get(3).getText(), BASE.text);
 
         //9 Assert a text of the main header
         assertEquals(driver.findElement(By.cssSelector(".main-title")).getText(), "EPAM FRAMEWORK WISHES…");

@@ -1,5 +1,6 @@
 package hw1;
 
+import base.TestBaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,17 +10,15 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static enums.ProperText.ProperText;
+import static enums.ProperText.*;
 import static enums.Users.PITER_CHALOVSKII;
-import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class HomeworkTest {
+public class HomeworkTest extends TestBaseClass {
 
     @Test
     public void EpamPageTest() {
-        setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
 
         //1 Open BR and navigate
         WebDriver driver = new ChromeDriver();
@@ -67,10 +66,10 @@ public class HomeworkTest {
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<WebElement> textItems = driver.findElements(By.cssSelector(".benefit-txt"));
         assertEquals(textItems.size(), 4);
-        assertEquals(textItems.get(0).getText(), ProperText.PRACTICE);
-        assertEquals(textItems.get(1).getText(), ProperText.CUSTOM);
-        assertEquals(textItems.get(2).getText(), ProperText.MULTI);
-        assertEquals(textItems.get(3).getText(), ProperText.BASE);
+        assertEquals(textItems.get(0).getText(), PRACTICE.text);
+        assertEquals(textItems.get(1).getText(), CUSTOM.text);
+        assertEquals(textItems.get(2).getText(), MULTI.text);
+        assertEquals(textItems.get(3).getText(), BASE.text);
 
         //9 Assert a text of the main header
         assertEquals(driver.findElement(By.cssSelector(".main-title")).getText(), "EPAM FRAMEWORK WISHES…");
