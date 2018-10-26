@@ -7,10 +7,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import static enums.ProperText.*;
+import static enums.ProperTextHomePage.*;
 import static enums.Users.PITER_CHALOVSKII;
+import static java.lang.System.currentTimeMillis;
 import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -32,7 +32,6 @@ public class HomeworkTestDataProviderWithAnnotation {
     @BeforeMethod(alwaysRun = true)
     public void beforeMethod() {
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -43,6 +42,11 @@ public class HomeworkTestDataProviderWithAnnotation {
     @AfterClass(alwaysRun = true)
     public void afterClass() {
         driver.close();
+    }
+
+    @AfterSuite()
+    public void afterSuite(){
+        System.out.println(currentTimeMillis());
     }
 
     @Test

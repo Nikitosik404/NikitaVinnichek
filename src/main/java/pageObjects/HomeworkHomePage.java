@@ -1,13 +1,13 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static enums.ProperTextHomePage.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -27,13 +27,13 @@ public class HomeworkHomePage {
     @FindBy(css = ".profile-photo > span")
     private WebElement loginTitle;
 
-    @FindAll({@FindBy(css = ".m-l8 > li")})
+    @FindBy(css = ".m-l8 > li")
     private List<WebElement> headerItems;
 
-    @FindAll({@FindBy(css = ".benefit-icon")})
+    @FindBy(css = ".benefit-icon")
     private List<WebElement> testedImages;
 
-    @FindAll({@FindBy(css = ".benefit-txt")})
+    @FindBy(css = ".benefit-txt")
     private List<WebElement> imageTitles;
 
     @FindBy(css = ".main-title")
@@ -54,6 +54,9 @@ public class HomeworkHomePage {
     @FindBy(css = "footer")
     private WebElement footer;
 
+    @FindBy(css = "div.epam-logo > a > img")
+    private WebElement frameLogo;
+
     //==============================================checks==========================================
 
     public void checkTitle(WebDriver driver, String title) {
@@ -64,13 +67,19 @@ public class HomeworkHomePage {
         assertEquals(loginTitle.getText(), title);
     }
 
-    public void checkHeaderItemText(List<String> itemTexts) {
-        assertEquals(headerItems.size(), itemTexts.size());
+    public void checkHeaderItemText() {
+        List<String> expectedTitles = new ArrayList<>();
+        expectedTitles.add(HEADER_SECTION1.text);
+        expectedTitles.add(HEADER_SECTION2.text);
+        expectedTitles.add(HEADER_SECTION3.text);
+        expectedTitles.add(HEADER_SECTION4.text);
+
+        assertEquals(headerItems.size(), expectedTitles.size());
         for (WebElement item : headerItems) {
             assertTrue(item.isDisplayed());
         }
-        for (int i = 0; i < itemTexts.size(); i++){
-            assertEquals(headerItems.get(i).getText(), itemTexts.get(i));
+        for (int i = 0; i < expectedTitles.size(); i++){
+            assertEquals(headerItems.get(i).getText(), expectedTitles.get(i));
         }
     }
 
@@ -80,13 +89,19 @@ public class HomeworkHomePage {
         }
     }
 
-    public void checkImageTitles(List<String> titles) {
-        assertEquals(imageTitles.size(), titles.size());
+    public void checkImageTitles() {
+        ArrayList<String> expectedImageTitles = new ArrayList<>();
+        expectedImageTitles.add(PRACTICE.text);
+        expectedImageTitles.add(CUSTOM.text);
+        expectedImageTitles.add(MULTI.text);
+        expectedImageTitles.add(BASE.text);
+
+        assertEquals(imageTitles.size(), expectedImageTitles.size());
         for (WebElement item : imageTitles) {
             assertTrue(item.isDisplayed());
         }
-        for (int i = 0; i < titles.size(); i++){
-            assertEquals(imageTitles.get(i).getText(), titles.get(i));
+        for (int i = 0; i < expectedImageTitles.size(); i++){
+            assertEquals(imageTitles.get(i).getText(), expectedImageTitles.get(i));
         }
     }
 
@@ -99,8 +114,7 @@ public class HomeworkHomePage {
         assertTrue(mainFrame.isDisplayed());
     }
 
-    public void checkFrameLogo(WebDriver driver) {
-        WebElement frameLogo = driver.findElement(By.cssSelector("div.epam-logo > a > img"));
+    public void checkFrameLogo() {
         assertTrue(frameLogo.isDisplayed());
     }
 

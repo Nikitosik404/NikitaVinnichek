@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static enums.ProperText.*;
+import static enums.ProperTextHomePage.*;
 import static enums.Users.PITER_CHALOVSKII;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;

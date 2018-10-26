@@ -2,12 +2,12 @@ package dataProviders;
 
 import org.testng.annotations.DataProvider;
 
-import static enums.ProperText.*;
+import static enums.ProperTextHomePage.*;
 
 public class HomeworkDataProviders {
 
     @DataProvider(parallel=true)
-    public Object[][] HomeworkDataProvider() {
+    public Object[][] homeworkDataProvider() {
         return new Object[][] {
                 {PRACTICE.text, 0},
                 {CUSTOM.text, 1},

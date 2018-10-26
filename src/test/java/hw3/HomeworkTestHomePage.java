@@ -10,11 +10,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pageObjects.HomeworkHomePage;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static enums.ProperText.*;
+import static enums.ProperTextHomePage.*;
 import static enums.Users.PITER_CHALOVSKII;
 
 public class HomeworkTestHomePage extends TestBaseClass {
@@ -58,23 +56,13 @@ public class HomeworkTestHomePage extends TestBaseClass {
         homePage.checkTitle(driver, TITLE.text);
 
         //6 Assert that there are 4 items on the header section are displayed and they have proper texts
-        List<String> expectedTitles = new ArrayList<>();
-        expectedTitles.add(HEADER_SECTION1.text);
-        expectedTitles.add(HEADER_SECTION2.text);
-        expectedTitles.add(HEADER_SECTION3.text);
-        expectedTitles.add(HEADER_SECTION4.text);
-        homePage.checkHeaderItemText(expectedTitles);
+        homePage.checkHeaderItemText();
 
         //7 Assert that there are 4 images on the Index Page and they are displayed
         homePage.checkIndexPageImages();
 
         //8 Assert that there are 4 texts on the Index Page under icons and they have proper text
-        ArrayList<String> expectedImageTitles = new ArrayList<>();
-        expectedImageTitles.add(PRACTICE.text);
-        expectedImageTitles.add(CUSTOM.text);
-        expectedImageTitles.add(MULTI.text);
-        expectedImageTitles.add(BASE.text);
-        homePage.checkImageTitles(expectedImageTitles);
+        homePage.checkImageTitles();
 
         //9 Assert a text of the main header
         homePage.checkMainHeader(MAIN_TITLE.text, MAIN_TEXT.text);
@@ -85,7 +73,7 @@ public class HomeworkTestHomePage extends TestBaseClass {
 
         //11 Switch to the iframe and check that there is Epam logo in the left top conner of iframe
         homePage.switchToNewFrame(driver);
-        homePage.checkFrameLogo(driver);
+        homePage.checkFrameLogo();
 
         //12 Switch to original window back
         homePage.switchToOldFrame(driver);
