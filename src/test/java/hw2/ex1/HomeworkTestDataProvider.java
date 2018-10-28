@@ -15,7 +15,7 @@ import static org.testng.Assert.assertEquals;
 
 public class HomeworkTestDataProvider extends TestBaseClass {
 
-    @Test(dataProvider = "HomeworkDataProvider", dataProviderClass = HomeworkDataProviders.class)
+    @Test(dataProvider = "homeworkDataProvider", dataProviderClass = HomeworkDataProviders.class)
     public void simpleTest(String propperText, int numberText) {
 
         //1 Open BR

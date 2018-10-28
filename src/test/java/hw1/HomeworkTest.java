@@ -47,11 +47,11 @@ public class HomeworkTest extends TestBaseClass {
         //6 Assert that there are 4 items on the header section are displayed and they have proper texts
         List<WebElement> headerItems = driver.findElements(cssSelector("ul.uui-navigation.nav.navbar-nav.m-l8 > li"));
         assertEquals(headerItems.size(), 4);
-        
-        for (WebElement item: headerItems){
+
+        for (WebElement item : headerItems) {
             assertTrue(item.isDisplayed());
         }
-        
+
         assertEquals(headerItems.get(0).getText(), "HOME");
         assertEquals(headerItems.get(1).getText(), "CONTACT FORM");
         assertEquals(headerItems.get(2).getText(), "SERVICE");
@@ -83,7 +83,7 @@ public class HomeworkTest extends TestBaseClass {
 
         //11 Switch to the iframe and check that there is Epam logo in the left top conner of iframe
         driver.switchTo().frame("iframe");
-        assertTrue(driver.findElement( id("epam_logo") ).isDisplayed());
+        assertTrue(driver.findElement(id("epam_logo")).isDisplayed());
 
         //12 Switch to original window back
         driver.switchTo().defaultContent();

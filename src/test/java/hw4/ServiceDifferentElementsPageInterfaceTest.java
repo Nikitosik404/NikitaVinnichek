@@ -57,17 +57,17 @@ public class ServiceDifferentElementsPageInterfaceTest extends SelenideTestBase 
         //10 Assert that there is Left Section
         servicePageSelenide.checkLeftSection();
 
-        //11-12 Select checkboxes (Water, Wind)
+        //11-12 Select checkboxes (Water(0), Wind(2))
         //Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
         servicePageSelenide.selectOneOfCheckBoxes(0);
         servicePageSelenide.selectOneOfCheckBoxes(2);
 
 
-        //13-14 Select radio (Selen)
+        //13-14 Select radio (Selen(3))
         //Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
         servicePageSelenide.selectOneOfRadioButtons(3);
 
-        //15-16 Select in dropdown (Yellow)
+        //15-16 Select in dropdown (Yellow(3))
         //Assert that for dropdown there is a log row and value is corresponded to the selected value. 
         servicePageSelenide.selectOneOfDropdownElements(3);
 

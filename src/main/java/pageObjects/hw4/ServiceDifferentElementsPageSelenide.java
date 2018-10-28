@@ -13,40 +13,40 @@ import static org.testng.Assert.assertTrue;
 
 public class ServiceDifferentElementsPageSelenide {
 
-    private ElementsCollection CheckBoxes = $$(By.cssSelector(".label-checkbox > input"));
+    private ElementsCollection checkBoxes = $$(By.cssSelector(".label-checkbox > input"));
 
-    private ElementsCollection RadioButtons = $$(By.cssSelector(".label-radio > input"));
+    private ElementsCollection radioButtons = $$(By.cssSelector(".label-radio > input"));
 
-    private ElementsCollection DropdownElements = $$(By.cssSelector(".colors .uui-form-element > option"));
+    private ElementsCollection dropdownElements = $$(By.cssSelector(".colors .uui-form-element > option"));
 
-    private SelenideElement Dropdown = $(By.cssSelector(".main-content-hg .colors"));
+    private SelenideElement dropdown = $(By.cssSelector(".main-content-hg .colors"));
 
-    private ElementsCollection Buttons = $$(By.cssSelector(".main-content-hg .uui-button"));
+    private ElementsCollection buttons = $$(By.cssSelector(".main-content-hg .uui-button"));
 
-    private SelenideElement LeftSection = $(By.cssSelector(".sidebar-menu"));
+    private SelenideElement leftSection = $(By.cssSelector(".sidebar-menu"));
 
-    private SelenideElement RightSection = $(By.cssSelector(".right-fix-panel"));
+    private SelenideElement rightSection = $(By.cssSelector(".right-fix-panel"));
 
-    private ElementsCollection Logs = $$(By.cssSelector(".panel-body-list.logs > li"));
+    private ElementsCollection logs = $$(By.cssSelector(".panel-body-list.logs > li"));
 
     //==============================methods==================================
 
     public void selectOneOfCheckBoxes(int number) {
-        CheckBoxes.shouldBe(sizeGreaterThan(number));
-        CheckBoxes.get(number).click();
-        checkLogOfCheckBox(CheckBoxes.get(number));
+        checkBoxes.shouldBe(sizeGreaterThan(number));
+        checkBoxes.get(number).click();
+        checkLogOfCheckBox(checkBoxes.get(number));
     }
 
     public void selectOneOfRadioButtons(int number) {
-        RadioButtons.shouldBe(sizeGreaterThan(number));
-        RadioButtons.get(number).click();
-        checkLog(RadioButtons.get(number));
+        radioButtons.shouldBe(sizeGreaterThan(number));
+        radioButtons.get(number).click();
+        checkLog(radioButtons.get(number));
     }
 
     public void selectOneOfDropdownElements(int number) {
-        DropdownElements.shouldBe(sizeGreaterThan(number));
-        DropdownElements.get(number).click();
-        checkLog(DropdownElements.get(number));
+        dropdownElements.shouldBe(sizeGreaterThan(number));
+        dropdownElements.get(number).click();
+        checkLog(dropdownElements.get(number));
     }
 
     //==============================checks===================================
@@ -59,42 +59,42 @@ public class ServiceDifferentElementsPageSelenide {
     }
 
     private void checkCheckBoxes() {
-        for (SelenideElement element : CheckBoxes) {
+        for (SelenideElement element : checkBoxes) {
             element.shouldBe(visible);
         }
     }
 
     private void checkCheckRadios() {
-        for (SelenideElement item: RadioButtons) {
+        for (SelenideElement item: radioButtons) {
             item.shouldBe(visible);
         }
     }
 
     private void checkDropdown() {
-        Dropdown.shouldBe(visible);
+        dropdown.shouldBe(visible);
     }
 
     private void checkButtons() {
-        for (SelenideElement element : Buttons) {
+        for (SelenideElement element : buttons) {
             element.shouldBe(visible);
         }
     }
 
     public void checkRightSection() {
-        RightSection.shouldBe(visible);
+        rightSection.shouldBe(visible);
     }
 
     public void checkLeftSection() {
-        LeftSection.shouldBe(visible);
+        leftSection.shouldBe(visible);
     }
 
     public void checkLog(SelenideElement element) {
-        assertTrue(Logs.first().getText().contains(element.getText()));
-        Logs.first().shouldBe(visible);
+        assertTrue(logs.first().getText().contains(element.getText()));
+        logs.first().shouldBe(visible);
     }
 
     public void checkLogOfCheckBox(SelenideElement element) {
-        assertTrue(Logs.first().getText().contains(element.getText() + String.valueOf(element.is(selected))));
-        Logs.first().shouldBe(visible);
+        assertTrue(logs.first().getText().contains(element.getText() + String.valueOf(element.is(selected))));
+        logs.first().shouldBe(visible);
     }
 }
