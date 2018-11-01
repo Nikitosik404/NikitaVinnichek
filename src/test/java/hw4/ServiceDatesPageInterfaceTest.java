@@ -3,41 +3,40 @@ package hw4;
 import base.SelenideTestBase;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pageObjects.hw4.HomePageSelenide;
-import pageObjects.hw4.ServiceDatesPageSelenide;
+import pageObjects.hw4.Dates;
+import pageObjects.hw4.HomePage;
 
 import static com.codeborne.selenide.Selenide.page;
-import static enums.ProperTextHomePage.USER;
-import static enums.Users.PITER_CHALOVSKII;
+import static enums.Users.PITER_CHAILOVSKII;
 
 public class ServiceDatesPageInterfaceTest extends SelenideTestBase {
 
-    private HomePageSelenide homePageSelenide;
-    private ServiceDatesPageSelenide datesPageSelenide;
+    private HomePage homePage;
+    private Dates datesPageSelenide;
 
     @BeforeClass
     public void beforeClass() {
-        homePageSelenide = page(HomePageSelenide.class);
-        datesPageSelenide = page(ServiceDatesPageSelenide.class);
+        homePage = page(HomePage.class);
+        datesPageSelenide = page(Dates.class);
     }
 
     @Test
     public void datesPageTest() {
         //1 Open test site by URL
-        homePageSelenide.openPage();
+        homePage.openPage();
 
         //2 Assert Browser title
-        homePageSelenide.checkTitle();
+        homePage.checkTitle();
 
         //3 Perform login
-        homePageSelenide.login(PITER_CHALOVSKII.login, PITER_CHALOVSKII.password);
+        homePage.login(PITER_CHAILOVSKII);
 
-        //4 Assert User name in the left-top side of screen that user is loggined
-        homePageSelenide.checkLoginTitle(USER.text);
+        //4 Assert User name in the left-top side of screen that user is logged
+        homePage.checkLoginTitle(PITER_CHAILOVSKII);
 
         //5 Open through the header menu Service -> Dates Page
-        homePageSelenide.clickHeadServiceButton();
-        homePageSelenide.clickHeadServiceDates();
+        homePage.clickHeadServiceButton();
+        homePage.clickHeadServiceDates();
 
         //6 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position (From = 0, To = 100)
         datesPageSelenide.moveLeftSlider(0);

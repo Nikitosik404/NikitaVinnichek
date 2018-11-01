@@ -16,22 +16,8 @@ public enum ProperTextHomePage {
     HEADER_SECTION4("METALS & COLORS"),
     SUB_HEADER("JDI GITHUB"),
     SUB_HEADER_URL("https://github.com/epam/JDI"),
-    SERVICE_DROPDOWN1("SUPPORT"),
-    SERVICE_DROPDOWN2("DATES"),
-    SERVICE_DROPDOWN3("COMPLEX TABLE"),
-    SERVICE_DROPDOWN4("SIMPLE TABLE"),
-    SERVICE_DROPDOWN5("USER TABLE"),
-    SERVICE_DROPDOWN6("TABLE WITH PAGES"),
-    SERVICE_DROPDOWN7("DIFFERENT ELEMENTS"),
-    SERVICE_DROPDOWN8("PERFORMANCE"),
-    SERVICE_LEFTSECTION1("Support"),
-    SERVICE_LEFTSECTION2("Dates"),
-    SERVICE_LEFTSECTION3("Complex Table"),
-    SERVICE_LEFTSECTION4("Simple Table"),
-    SERVICE_LEFTSECTION5("User Table"),
-    SERVICE_LEFTSECTION6("Table with pages"),
-    SERVICE_LEFTSECTION7("Different elements"),
-    SERVICE_LEFTSECTION8("Performance");
+    HOME_PAGE_URL("https://epam.github.io/JDI/index.html")
+    ;
 
 
     public String text;

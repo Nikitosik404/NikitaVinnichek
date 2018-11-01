@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static enums.ProperTextHomePage.*;
-import static enums.Users.PITER_CHALOVSKII;
+import static enums.Users.PITER_CHAILOVSKII;
 import static org.openqa.selenium.By.cssSelector;
 import static org.openqa.selenium.By.id;
 import static org.testng.Assert.assertEquals;
@@ -32,8 +32,8 @@ public class HomeworkTest extends TestBaseClass {
 
         //3 Perform login
         driver.findElement(cssSelector(".profile-photo")).click();
-        driver.findElement(cssSelector("[id = 'Name']")).sendKeys(PITER_CHALOVSKII.login);
-        driver.findElement(cssSelector("[id = 'Password']")).sendKeys(PITER_CHALOVSKII.password);
+        driver.findElement(cssSelector("[id = 'Name']")).sendKeys(PITER_CHAILOVSKII.login);
+        driver.findElement(cssSelector("[id = 'Password']")).sendKeys(PITER_CHAILOVSKII.password);
         driver.findElement(cssSelector("[type = 'submit']")).click();
 
         //4 Assert User name in the left-top side of screen that user is loggined

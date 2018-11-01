@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class ServiceDatesPageSelenide {
+public class Dates {
 
 
     private ElementsCollection logs = $$(By.cssSelector(".panel-body-list.logs > li"));

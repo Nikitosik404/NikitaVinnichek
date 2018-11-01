@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import java.util.List;
 
 import static enums.ProperTextHomePage.*;
-import static enums.Users.PITER_CHALOVSKII;
+import static enums.Users.PITER_CHAILOVSKII;
 import static java.lang.System.currentTimeMillis;
 import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
@@ -60,8 +60,8 @@ public class HomeworkTestDataProviderWithAnnotation {
 
         //3 Perform login
         driver.findElement(By.cssSelector(".profile-photo")).click();
-        driver.findElement(By.cssSelector("[id = 'Name']")).sendKeys(PITER_CHALOVSKII.login);
-        driver.findElement(By.cssSelector("[id = 'Password']")).sendKeys(PITER_CHALOVSKII.password);
+        driver.findElement(By.cssSelector("[id = 'Name']")).sendKeys(PITER_CHAILOVSKII.login);
+        driver.findElement(By.cssSelector("[id = 'Password']")).sendKeys(PITER_CHAILOVSKII.password);
         driver.findElement(By.cssSelector("[type = 'submit']")).click();
 
         //4 Assert User name in the left-top side of screen that user is loggined

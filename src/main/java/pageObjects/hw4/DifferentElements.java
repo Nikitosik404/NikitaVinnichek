@@ -2,16 +2,18 @@ package pageObjects.hw4;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import enums.hw4.CheckBoxes;
+import enums.hw4.DropdownElements;
+import enums.hw4.RadioButtons;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.selected;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static org.testng.Assert.assertTrue;
 
-public class ServiceDifferentElementsPageSelenide {
+public class DifferentElements {
 
     private ElementsCollection checkBoxes = $$(By.cssSelector(".label-checkbox > input"));
 
@@ -31,22 +33,20 @@ public class ServiceDifferentElementsPageSelenide {
 
     //==============================methods==================================
 
-    public void selectOneOfCheckBoxes(int number) {
-        checkBoxes.shouldBe(sizeGreaterThan(number));
-        checkBoxes.get(number).click();
-        checkLogOfCheckBox(checkBoxes.get(number));
+    public void selectOneOfCheckBoxes(CheckBoxes checkBox) {
+        checkBoxes.shouldBe(sizeGreaterThan(Integer.parseInt(checkBox.displayName)));
+        checkBoxes.get(Integer.parseInt(checkBox.displayName)).click();
     }
 
-    public void selectOneOfRadioButtons(int number) {
-        radioButtons.shouldBe(sizeGreaterThan(number));
-        radioButtons.get(number).click();
-        checkLog(radioButtons.get(number));
+    public void selectOneOfRadioButtons(RadioButtons radioButton) {
+        radioButtons.shouldBe(sizeGreaterThan(Integer.valueOf(radioButton.displayName)));
+        radioButtons.get(Integer.valueOf(radioButton.displayName)).click();
+        checkLog(radioButtons.get(Integer.valueOf(radioButton.displayName)));
     }
 
-    public void selectOneOfDropdownElements(int number) {
-        dropdownElements.shouldBe(sizeGreaterThan(number));
-        dropdownElements.get(number).click();
-        checkLog(dropdownElements.get(number));
+    public void selectOneOfDropdownElements(DropdownElements dropdownElement) {
+        dropdownElements.shouldBe(sizeGreaterThan(Integer.valueOf(dropdownElement.displayName)));
+        dropdownElements.get(Integer.valueOf(dropdownElement.displayName)).click();
     }
 
     //==============================checks===================================
@@ -65,7 +65,7 @@ public class ServiceDifferentElementsPageSelenide {
     }
 
     private void checkCheckRadios() {
-        for (SelenideElement item: radioButtons) {
+        for (SelenideElement item : radioButtons) {
             item.shouldBe(visible);
         }
     }
@@ -93,8 +93,20 @@ public class ServiceDifferentElementsPageSelenide {
         logs.first().shouldBe(visible);
     }
 
-    public void checkLogOfCheckBox(SelenideElement element) {
-        assertTrue(logs.first().getText().contains(element.getText() + String.valueOf(element.is(selected))));
+    public void checkLogsDropdowns(DropdownElements radioButton) {
+        SelenideElement element = dropdownElements.get(Integer.valueOf(radioButton.displayName));
+        assertTrue(logs.first().getText().contains(element.getText()));
         logs.first().shouldBe(visible);
+    }
+
+    public void checkLogsRadioButton(RadioButtons radioButton) {
+        SelenideElement element = radioButtons.get(Integer.valueOf(radioButton.displayName));
+        assertTrue(logs.first().getText().contains(element.getText()));
+        logs.first().shouldBe(visible);
+    }
+
+    public void checkLogOfCheckBox(CheckBoxes checkBox) {
+        SelenideElement element = checkBoxes.get(Integer.valueOf(checkBox.displayName));
+        logs.findBy(text(element.getText())).shouldHave(text(element.getText() + String.valueOf(element.is(selected))));
     }
 }
