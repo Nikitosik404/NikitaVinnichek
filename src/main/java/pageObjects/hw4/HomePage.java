@@ -3,6 +3,7 @@ package pageObjects.hw4;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import enums.Users;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
@@ -40,11 +41,12 @@ public class HomePage {
     private SelenideElement datesButton = $(By.cssSelector(".dropdown-menu [href = 'dates.html']"));
 
     //==============================methods==================================
-
+    @Step
     public void openPage() {
         open(HOME_PAGE_URL.text);
     }
 
+    @Step
     public void login(Users user) {
         profileButton.click();
         login.sendKeys(user.login);
@@ -52,39 +54,46 @@ public class HomePage {
         submit.click();
     }
 
+    @Step
     public void clickHeadServiceButton() {
         serviceHeadButton.click();
     }
 
+    @Step
     public void clickLeftServiceButton() {
         serviceLeftButton.click();
     }
 
+    @Step
     public void clickHeadServiceDifferentElements() {
         differentElementsButton.click();
     }
 
+    @Step
     public void clickHeadServiceDates() {
         datesButton.click();
     }
 
     //==============================checks===================================
-
+    @Step
     public void checkTitle() {
         assertEquals(getWebDriver().getTitle(), TITLE.text);
     }
 
+    @Step
     public void checkLoginTitle(Users user) {
         loginTitle.shouldBe(visible);
         loginTitle.shouldHave(text(user.name));
     }
 
+    @Step
     public void checkHeadServiceDropdownContains() {
         for (String serviceElement : getServiceMenu()) {
             assertTrue(serviceHeadListItems.texts().contains(serviceElement.toUpperCase()));
         }
     }
 
+    @Step
     public void checkLeftServiceDropdownContains() {
         for (String serviceElement : getServiceMenu()) {
             assertTrue(serviceLeftListItems.texts().contains(serviceElement));

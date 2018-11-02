@@ -17,6 +17,7 @@ import static org.testng.Assert.assertTrue;
 
 public class SmokeAndRegressionHomeworkTest extends TestBaseClass {
 
+    @SuppressWarnings("unchecked")
     @Test(groups = {"Regression","Smoke"})
     public void firstSimpleTest() {
 
