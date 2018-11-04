@@ -43,7 +43,6 @@ public class DifferentElements {
     public void selectOneOfRadioButtons(RadioButtons radioButton) {
         radioButtons.shouldBe(sizeGreaterThan(Integer.valueOf(radioButton.displayName)));
         radioButtons.get(Integer.valueOf(radioButton.displayName)).click();
-        checkLog(radioButtons.get(Integer.valueOf(radioButton.displayName)));
     }
 
     @Step
@@ -98,28 +97,21 @@ public class DifferentElements {
     }
 
     @Step
-    public void checkLog(SelenideElement element) {
-        assertTrue(logs.first().getText().contains(element.getText()));
-        logs.first().shouldBe(visible);
-    }
-
-    @Step
     public void checkLogsDropdowns(DropdownElements radioButton) {
         SelenideElement element = dropdownElements.get(Integer.valueOf(radioButton.displayName));
         assertTrue(logs.first().getText().contains(element.getText()));
-        logs.first().shouldBe(visible);
     }
 
     @Step
     public void checkLogsRadioButton(RadioButtons radioButton) {
         SelenideElement element = radioButtons.get(Integer.valueOf(radioButton.displayName));
         assertTrue(logs.first().getText().contains(element.getText()));
-        logs.first().shouldBe(visible);
     }
 
     @Step
     public void checkLogOfCheckBox(CheckBoxes checkBox) {
         SelenideElement element = checkBoxes.get(Integer.valueOf(checkBox.displayName));
+        if (logs.findBy(text(element.getText())) != null)
         logs.findBy(text(element.getText())).shouldHave(text(element.getText() + String.valueOf(element.is(selected))));
     }
 }

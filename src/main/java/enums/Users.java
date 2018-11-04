@@ -2,7 +2,8 @@ package enums;
 
 public enum Users {
 
-    PITER_CHAILOVSKII("epam", "1234", "PITER CHAILOVSKII");
+    PITER_CHAILOVSKII("epam", "1234", "PITER CHAILOVSKII"),
+    ALEX_ZHDANOV("epam", "1234", "ALEX ZHDANOV");
 
     public String  login;
     public String password;
