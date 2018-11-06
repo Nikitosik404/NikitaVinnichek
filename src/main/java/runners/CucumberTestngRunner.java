@@ -6,7 +6,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.BeforeSuite;
 
 
-@CucumberOptions(features = "src/test/java/lessons/lesson6", glue = "pageObjects")
+@CucumberOptions(features = "src/test/java/hw6/ex2", glue = "pageObjects/hw6")
 public class CucumberTestngRunner extends AbstractTestNGCucumberTests {
 
     @BeforeSuite
