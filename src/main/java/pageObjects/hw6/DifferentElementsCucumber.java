@@ -31,7 +31,7 @@ public class DifferentElementsCucumber {
 
     private SelenideElement rightSection = $(cssSelector(".right-fix-panel"));
 
-    private ElementsCollection logs = $$(cssSelector(".panel-body-list.logs > li"));
+    private ElementsCollection logs = $$(".panel-body-list.logs > li");
 
     public DifferentElementsCucumber() {
         page(this);

@@ -21,6 +21,7 @@ Feature: User Table Page tests
       | 6      | Giovanni Rovelli | Lorem ipsum some description |
 
     When I select 'vip' checkbox for "Sergey Ivan"
+    Then 1 log row has "Vip: condition changed to true" text in log section
 
     When I click on dropdown in column Type for user Roman
     Then droplist contains values:

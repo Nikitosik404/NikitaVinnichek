@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static enums.ProperTextHomePage.TITLE_USER_TABLE;
 import static org.testng.Assert.assertEquals;
@@ -54,6 +54,8 @@ public class UserTablePageCucumber {
     private SelenideElement user = $("tbody");
 
     private SelenideElement lastOpenedDropList;
+
+    private ElementsCollection logs = $$(".logs li");
 
     //==============================methods==================================
     @When("I select 'vip' checkbox for \"(.+)\"")
@@ -110,10 +112,10 @@ public class UserTablePageCucumber {
         }
     }
 
-//    @Then("(\\d+) log row has \"(.+)\" text in log section")
-//    public void checkLogRow(int rowIndex, String expectedText) {
-//        assertEquals(LOG_PARSER.getActualLogRecord(rowIndex - 1), expectedText);
-//    }
+    @Then("(\\d+) log row has \"(.+)\" text in log section")
+    public void checkLogRow(int index, String expectedText) {
+        logs.get(index - 1).shouldHave(text(expectedText));
+    }
 
     @Then("droplist contains values:")
     public void checkDropDownContent(DataTable expectedDropDownContent) {
