@@ -1,45 +1,43 @@
 package site;
 
 import com.epam.jdi.uitests.web.selenium.elements.common.Label;
+import com.epam.jdi.uitests.web.selenium.elements.complex.Menu;
 import com.epam.jdi.uitests.web.selenium.elements.composite.WebSite;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JSite;
-import com.epam.web.matcher.junit.Assert;
 import entities.User;
-import enums.Users;
+import enums.jdi.NavigateMenu;
 import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.allure.annotations.Step;
 import site.pages.HomePageJdi;
 import site.pages.MetalAndColorsPageJdi;
-import site.sections.HeaderMenu;
+import site.sections.Header;
 import site.sections.LoginForm;
 
 @JSite("https://epam.github.io/JDI/")
-public class JdiExampleSite extends WebSite {
+public class JdiSite extends WebSite {
+    @FindBy(css = ".nav>li>a")
+    public Menu<NavigateMenu> navigation;
 
     public static HomePageJdi homePage;
     public static MetalAndColorsPageJdi metalAndColorsPage;
 
-    //=======================================WEB-ELEMENTS AND CONSTANTS=================================================
+    //=======================================WEB-ELEMENTS=================================================
     public static LoginForm loginForm;
-    public static HeaderMenu headerMenu;
+    public static Header headerMenu;
 
     @FindBy(css = ".profile-photo")
     public static Label profilePhoto;
 
     @Step
-    public static void login() {
+    public static void login(User user) {
         profilePhoto.click();
-        loginForm.loginAs(new User());
+        loginForm.loginAs(user);
     }
 
+    //=======================================METHODS=================================================
     @Step
-    public static void checkLoggedInUserName(Users user) {
-        Assert.areEquals(profilePhoto.getText(), user.name);
-    }
-
-    @Step
-    public static void openMetalAndColorsPageByHeader() {
-        headerMenu.navigation.clickOn("Metals & Colors");
+    public static void navigate(NavigateMenu title) {
+        headerMenu.navigation.clickOn(title.toString());
     }
 }
 

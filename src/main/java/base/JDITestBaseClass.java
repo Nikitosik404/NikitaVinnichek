@@ -3,11 +3,11 @@ package base;
 import com.epam.jdi.uitests.web.selenium.elements.composite.WebSite;
 import com.epam.jdi.uitests.web.testng.testRunner.TestNGBase;
 import org.testng.annotations.BeforeSuite;
-import site.JdiExampleSite;
+import site.JdiSite;
 
-public class MetalsAndColorsPageInit extends TestNGBase {
+public class JDITestBaseClass extends TestNGBase {
     @BeforeSuite(alwaysRun = true)
     public static void setUp() {
-        WebSite.init(JdiExampleSite.class);
+        WebSite.init(JdiSite.class);
     }
 }

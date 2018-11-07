@@ -1,10 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Test Suite" verbose="1" >
-    <test name="Simple Test" >
+    <test name="Homework Test" >
 
         <classes>
-            <class name="lessons.lesson4.SimpleTestSelenidePageObject" />
+            <class name="hw8.MetalsAndColorsPageTests" />
         </classes>
 
     </test>
