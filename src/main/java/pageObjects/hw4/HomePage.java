@@ -11,20 +11,6 @@ import static enums.hw4.LeftSectionService.getServiceMenu;
 import static org.testng.Assert.assertTrue;
 
 public class HomePage extends PageObjectBase {
-    @FindBy(css = ".profile-photo")
-    private SelenideElement profileButton;
-
-    @FindBy(css = "[id = 'Name']")
-    private SelenideElement login;
-
-    @FindBy(css = "[id = 'Password']")
-    private SelenideElement password;
-
-    @FindBy(css = "[type = 'submit']")
-    private SelenideElement submit;
-
-    @FindBy(css = ".profile-photo span")
-    private SelenideElement loginTitle;
 
     @FindBy(css = ".m-l8 .dropdown-toggle")
     private SelenideElement serviceHeadButton;
