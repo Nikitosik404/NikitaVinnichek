@@ -18,6 +18,7 @@ public class HomeworkDataProviders {
         Gson gson = new Gson();
         JsonObject jDataSet = new JsonParser().parse(new FileReader(DATA_WAY.toString())).getAsJsonObject();
         Object[][] result = new Object[jDataSet.size()][1];
+        // TODO Take a look on TypeToken
         for (int i = 0; i <= jDataSet.size() - 1; i++) {
             result[i][0] = gson.fromJson(jDataSet.get("data_" + (i + 1)), MetalAndColorsData.class);
         }
