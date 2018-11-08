@@ -17,7 +17,7 @@ public class MetalsAndColorsPageTests extends JDITestBaseClass {
         homePage.clearCache();
     }
 
-    @Test(dataProvider = "metalsAndColorsDataProvider", dataProviderClass = HomeworkDataProviders.class)
+    @Test(dataProvider = "metalsAndColorsDataProviderWithTypeToken", dataProviderClass = HomeworkDataProviders.class)
     public void metalsColorsTest(MetalAndColorsData data) {
         // TODO I can't execute this test because of the error below:
         //  [Utils] [ERROR] [Error] java.io.FileNotFoundException: src\test\resources\JDI_ex8_metalsColorsDataSet.json (The system cannot find the file specified)
