@@ -1,7 +1,11 @@
-package hw4;
+package hw5;
 
 import base.SelenideTestBase;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import listeners.AllureAttacmentListener;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pageObjects.hw4.DifferentElements;
 import pageObjects.hw4.HomePage;
@@ -12,10 +16,12 @@ import static enums.hw4.CheckBoxes.WATER;
 import static enums.hw4.CheckBoxes.WIND;
 import static enums.hw4.DropdownElements.YELLOW;
 import static enums.hw4.RadioButtons.SELEN;
-import static enums.hw4.Titles.DIFFERENT_ELEMENTS_PAGE;
 import static enums.hw4.Titles.HOME_PAGE;
 
-public class ServiceDifferentElementsPageInterfaceTest extends SelenideTestBase {
+@Feature("UI Tests")
+@Story("Service And Dates Pages Testing")
+@Listeners(AllureAttacmentListener.class)
+public class DifferentElementsPageTest extends SelenideTestBase {
 
     private HomePage homePage;
     private DifferentElements servicePageSelenide;
@@ -52,7 +58,6 @@ public class ServiceDifferentElementsPageInterfaceTest extends SelenideTestBase 
         //7 Open through the header menu Service -> Different Elements Page
         homePage.clickHeadServiceButton();
         homePage.clickHeadServiceDifferentElements();
-        servicePageSelenide.checkTitle(DIFFERENT_ELEMENTS_PAGE);
 
         //8 Check interface on Different elements page, it contains all needed elements
         servicePageSelenide.checkDifferentElementsPageExists();
@@ -93,5 +98,4 @@ public class ServiceDifferentElementsPageInterfaceTest extends SelenideTestBase 
         servicePageSelenide.checkLogOfCheckBox(WATER, false);
         servicePageSelenide.checkLogOfCheckBox(WIND, false);
     }
-
 }

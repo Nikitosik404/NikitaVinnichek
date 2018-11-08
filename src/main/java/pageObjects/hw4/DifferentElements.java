@@ -6,31 +6,38 @@ import enums.hw4.CheckBoxes;
 import enums.hw4.DropdownElements;
 import enums.hw4.RadioButtons;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
+import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static org.testng.Assert.assertTrue;
 
-public class DifferentElements {
+public class DifferentElements extends PageObjectBase  {
 
-    private ElementsCollection checkBoxes = $$(By.cssSelector(".label-checkbox > input"));
+    @FindBy(css = ".label-checkbox > input")
+    private ElementsCollection checkBoxes;
 
-    private ElementsCollection radioButtons = $$(By.cssSelector(".label-radio > input"));
+    @FindBy(css = ".label-radio > input")
+    private ElementsCollection radioButtons;
 
-    private ElementsCollection dropdownElements = $$(By.cssSelector(".colors .uui-form-element > option"));
+    @FindBy(css = ".colors .uui-form-element > option")
+    private ElementsCollection dropdownElements;
 
-    private SelenideElement dropdown = $(By.cssSelector(".main-content-hg .colors"));
+    @FindBy(css = ".main-content-hg .colors")
+    private SelenideElement dropdown;
 
-    private ElementsCollection buttons = $$(By.cssSelector(".main-content-hg .uui-button"));
+    @FindBy(css = ".main-content-hg .uui-button")
+    private ElementsCollection buttons;
 
-    private SelenideElement leftSection = $(By.cssSelector(".sidebar-menu"));
+    @FindBy(css = ".sidebar-menu")
+    private SelenideElement leftSection;
 
-    private SelenideElement rightSection = $(By.cssSelector(".right-fix-panel"));
+    @FindBy(css = ".right-fix-panel")
+    private SelenideElement rightSection;
 
-    private ElementsCollection logs = $$(By.cssSelector(".panel-body-list.logs > li"));
+    @FindBy(css = ".panel-body-list.logs > li")
+    private ElementsCollection logs;
 
     //==============================methods==================================
     @Step
@@ -109,9 +116,9 @@ public class DifferentElements {
     }
 
     @Step
-    public void checkLogOfCheckBox(CheckBoxes checkBox) {
+    public void checkLogOfCheckBox(CheckBoxes checkBox, boolean value) {
         SelenideElement element = checkBoxes.get(Integer.valueOf(checkBox.displayName));
         if (logs.findBy(text(element.getText())) != null)
-        logs.findBy(text(element.getText())).shouldHave(text(element.getText() + String.valueOf(element.is(selected))));
+        logs.findBy(text(element.getText())).shouldHave(text(element.getText() + String.valueOf(value)));
     }
 }

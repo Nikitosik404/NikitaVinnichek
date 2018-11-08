@@ -1,17 +1,23 @@
-package hw4;
+package hw5;
 
 import base.SelenideTestBase;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import listeners.AllureAttacmentListener;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pageObjects.hw4.Dates;
 import pageObjects.hw4.HomePage;
 
 import static com.codeborne.selenide.Selenide.page;
 import static enums.Users.PITER_CHAILOVSKII;
-import static enums.hw4.Titles.DATES_PAGE;
 import static enums.hw4.Titles.HOME_PAGE;
 
-public class ServiceDatesPageInterfaceTest extends SelenideTestBase {
+@Feature("UI Tests")
+@Story("Service And Dates Pages Testing")
+@Listeners(AllureAttacmentListener.class)
+public class DatesPageTest extends SelenideTestBase {
 
     private HomePage homePage;
     private Dates datesPageSelenide;
@@ -39,7 +45,6 @@ public class ServiceDatesPageInterfaceTest extends SelenideTestBase {
         //5 Open through the header menu Service -> Dates Page
         homePage.clickHeadServiceButton();
         homePage.clickHeadServiceDates();
-        datesPageSelenide.checkTitle(DATES_PAGE);
 
         //6 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position (From = 0, To = 100)
         datesPageSelenide.moveLeftSlider(0);

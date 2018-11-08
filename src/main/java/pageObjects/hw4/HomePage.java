@@ -2,56 +2,52 @@ package pageObjects.hw4;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import enums.Users;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
+import org.openqa.selenium.support.FindBy;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 import static enums.ProperTextHomePage.HOME_PAGE_URL;
-import static enums.ProperTextHomePage.TITLE;
 import static enums.hw4.LeftSectionService.getServiceMenu;
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class HomePage {
+public class HomePage extends PageObjectBase {
+    @FindBy(css = ".profile-photo")
+    private SelenideElement profileButton;
 
-    private SelenideElement profileButton = $(By.cssSelector(".profile-photo"));
+    @FindBy(css = "[id = 'Name']")
+    private SelenideElement login;
 
-    private SelenideElement login = $(By.cssSelector("[id = 'Name']"));
+    @FindBy(css = "[id = 'Password']")
+    private SelenideElement password;
 
-    private SelenideElement password = $(By.cssSelector("[id = 'Password']"));
+    @FindBy(css = "[type = 'submit']")
+    private SelenideElement submit;
 
-    private SelenideElement submit = $(By.cssSelector("[type = 'submit']"));
+    @FindBy(css = ".profile-photo span")
+    private SelenideElement loginTitle;
 
-    private SelenideElement loginTitle = $(By.cssSelector(".profile-photo span"));
+    @FindBy(css = ".m-l8 .dropdown-toggle")
+    private SelenideElement serviceHeadButton;
 
-    private SelenideElement serviceHeadButton = $(By.cssSelector(".m-l8 .dropdown-toggle"));
+    @FindBy(css = ".sidebar-menu .menu-title")
+    private SelenideElement serviceLeftButton;
 
-    private SelenideElement serviceLeftButton = $(By.cssSelector(".sidebar-menu .menu-title"));
+    @FindBy(css = ".dropdown-menu > li")
+    private ElementsCollection serviceHeadListItems;
 
-    private ElementsCollection serviceHeadListItems = $$(By.cssSelector(".dropdown-menu > li"));
+    @FindBy(css = "[class = 'sub'] li")
+    private ElementsCollection serviceLeftListItems;
 
-    private ElementsCollection serviceLeftListItems = $$(By.cssSelector("[class = 'sub'] li"));
+    @FindBy(css = ".dropdown-menu [href = 'different-elements.html']")
+    private SelenideElement differentElementsButton;
 
-    private SelenideElement differentElementsButton = $(By.cssSelector(".dropdown-menu [href = 'different-elements.html']"));
-
-    private SelenideElement datesButton = $(By.cssSelector(".dropdown-menu [href = 'dates.html']"));
+    @FindBy(css = ".dropdown-menu [href = 'dates.html']")
+    private SelenideElement datesButton;
 
     //==============================methods==================================
     @Step
     public void openPage() {
         open(HOME_PAGE_URL.text);
-    }
-
-    @Step
-    public void login(Users user) {
-        profileButton.click();
-        login.sendKeys(user.login);
-        password.sendKeys(user.password);
-        submit.click();
     }
 
     @Step
@@ -75,17 +71,6 @@ public class HomePage {
     }
 
     //==============================checks===================================
-    @Step
-    public void checkTitle() {
-        assertEquals(getWebDriver().getTitle(), TITLE.text);
-    }
-
-    @Step
-    public void checkLoginTitle(Users user) {
-        loginTitle.shouldBe(visible);
-        loginTitle.shouldHave(text(user.name));
-    }
-
     @Step
     public void checkHeadServiceDropdownContains() {
         for (String serviceElement : getServiceMenu()) {

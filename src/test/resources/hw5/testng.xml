@@ -1,11 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Test Suite" parallel="methods" thread-count="3">
-    <test name="HW 5 Tests">
-
-        <classes>
-            <class name="hw5.ServicePageTest"/>
-        </classes>
-
+<suite name="Test Suite" verbose="1">
+    <test name="HW 5 Tests" parallel="methods" thread-count="3">
+        <packages>
+            <package name="hw5"/>
+        </packages>
     </test>
 </suite>
