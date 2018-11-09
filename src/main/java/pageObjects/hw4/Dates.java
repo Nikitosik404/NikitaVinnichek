@@ -25,7 +25,8 @@ public class Dates extends PageObjectBase {
     @Step
     public void moveLeftSlider(int position) {
         Actions newAction = new Actions(getWebDriver());
-        double xOffset = (position - 1) * slider.getSize().getWidth() / 100 -
+        double width =slider.getSize().getWidth();
+        double xOffset = (position - 1) * width / 100 -
                 Double.parseDouble(sliderItems.first().getCssValue("left")
                         .replaceAll("px", ""));
         newAction.dragAndDropBy(sliderItems.first(),(int) Math.ceil(xOffset), 0).build().perform();
@@ -34,7 +35,9 @@ public class Dates extends PageObjectBase {
     @Step
     public void moveRightSlider(int position) {
         Actions newAction = new Actions(getWebDriver());
-        double xOffset = (position - 1) * slider.getSize().getWidth() / 100 - Double.parseDouble(sliderItems.last().getCssValue("left")
+        double width =slider.getSize().getWidth();
+        double xOffset = (position - 1) * width / 100
+                - Double.parseDouble(sliderItems.last().getCssValue("left")
                         .replaceAll("px", ""));
 
         newAction.dragAndDropBy(sliderItems.last(),(int) Math.ceil(xOffset), 0).build().perform();
