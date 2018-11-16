@@ -67,27 +67,26 @@ public class DifferentElements extends PageObjectBase  {
         this.checkButtons();
     }
 
-    @Step
     private void checkCheckBoxes() {
+        checkBoxes.shouldHaveSize(4);
         for (SelenideElement element : checkBoxes) {
             element.shouldBe(visible);
         }
     }
 
-    @Step
     private void checkCheckRadios() {
+        radioButtons.shouldHaveSize(4);
         for (SelenideElement item : radioButtons) {
             item.shouldBe(visible);
         }
     }
 
-    @Step
     private void checkDropdown() {
         dropdown.shouldBe(visible);
     }
 
-    @Step
     private void checkButtons() {
+        buttons.shouldHaveSize(2);
         for (SelenideElement element : buttons) {
             element.shouldBe(visible);
         }
