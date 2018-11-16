@@ -6,6 +6,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.qameta.allure.Step;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
@@ -18,6 +19,9 @@ import static org.testng.Assert.assertTrue;
 public class DifferentElementsCucumber {
 
     private ElementsCollection checkBoxes = $$(cssSelector(".label-checkbox"));
+
+    @FindBy(css = ".label-checkbox input")
+    private ElementsCollection checkBoxElements;
 
     private ElementsCollection radioButtons = $$(cssSelector(".label-radio"));
 
@@ -40,11 +44,10 @@ public class DifferentElementsCucumber {
     //==============================methods==================================
 
     @Step
-    @When("I select checkboxes:")
-    @Then("I un-select checkboxes:")
-    public void selectOneOfCheckBoxes(List<String> checkoxes) {
+    @When("I set next checkboxes to (.+):")
+    public void selectCheckBoxes(String value, List<String> checkoxes) {
         for (String checkbox : checkoxes) {
-            checkBoxes.find(text(checkbox)).click();
+            selectCheckBox(Boolean.valueOf(value), checkbox);
         }
     }
 
@@ -146,4 +149,10 @@ public class DifferentElementsCucumber {
 
     }
 
+    private void selectCheckBox(boolean value, String checkbox) {
+        for (SelenideElement element : checkBoxElements) {
+            if (element.parent().getText().equals(checkbox))
+                element.setSelected(value);
+        }
+    }
 }

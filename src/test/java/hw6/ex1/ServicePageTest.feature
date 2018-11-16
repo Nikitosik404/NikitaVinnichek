@@ -16,7 +16,7 @@ Feature: Service Page tests
     Then Interface on Different Elements Page contains all needed elements
     Then The right section of the page is displayed
     Then The left section of the page is displayed
-    When I select checkboxes:
+    When I set next checkboxes to true:
       | Water |
       | Wind  |
     Then Checking of following checkboxes will be properly logged:
@@ -26,7 +26,7 @@ Feature: Service Page tests
     Then Selecting of Selen radio-button will be properly logged
     When I select Yellow item from the Colors Drop Down menu
     Then Selecting of Yellow drop down menu item will be properly logged
-    Then I un-select checkboxes:
+    When I set next checkboxes to false:
       | Water |
       | Wind  |
     And Un-selecting of following checboxes will be properly logged:
