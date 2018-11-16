@@ -3,6 +3,7 @@ package pageObjects.hw6;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.qameta.allure.Step;
@@ -13,7 +14,6 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static enums.ProperTextHomePage.HOME_PAGE_URL;
-import static enums.ProperTextHomePage.TITLE;
 import static enums.Users.PITER_CHAILOVSKII;
 import static enums.hw4.LeftSectionService.getServiceMenu;
 import static org.openqa.selenium.By.cssSelector;
@@ -57,20 +57,19 @@ public class HomePageCucumber {
     public HomePageCucumber() {
         page(this);
     }
-
     @Step
-    @Then("I am on \"Home Page\"")
-    public void openPage() {
-        open(HOME_PAGE_URL.text);
-    }
-
-    @Step
-    @And("I login as user (.+) with password (.+)")
+    @When("I login as user (.+) with password (.+)")
     public void login(String name, String passwd) {
         profileButton.click();
         login.sendKeys(name);
         password.sendKeys(passwd);
         submit.click();
+    }
+
+    @Step
+    @Given("I am on \"Home Page\"")
+    public void openPage() {
+        open(HOME_PAGE_URL.text);
     }
 
     @Step
@@ -116,9 +115,9 @@ public class HomePageCucumber {
 
     //==============================checks===================================
     @Step
-    @Then("The browser title is Home Page")
-    public void checkTitle() {
-        assertEquals(getWebDriver().getTitle(), TITLE.text);
+    @Then("The browser title is (.+)")
+    public void checkTitle(String title) {
+        assertEquals(getWebDriver().getTitle(), title);
     }
 
     @Step
@@ -127,7 +126,6 @@ public class HomePageCucumber {
         loginTitle.shouldBe(visible);
         loginTitle.shouldHave(text(user));
     }
-
     @Step
     @Then("Upper Service drop down opens with all needed options")
     public void checkHeadServiceDropdownContains() {
