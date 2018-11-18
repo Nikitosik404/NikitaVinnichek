@@ -1,0 +1,9 @@
+{
+  "aut": "ContactManager.apk",
+  "app_package": "com.example.android.contactmanager",
+  "app_activity": "com.example.android.contactmanager.ContactManager",
+  "test_platform": "Android",
+  "driver": "http://EPM-TSTF:ac6b5205-d23d-4349-a4e0-7600b8614b58@epm-mstfmsq-ci.minsk.epam.com:8080/wd/hub",
+  "device_name": "LGE Nexus 5",
+  "isRemote": true
+}
