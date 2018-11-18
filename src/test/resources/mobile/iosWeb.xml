@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Web Test for iOS device" verbose="1">
+    <parameter name="pathToConfig" value="src\main\resources\deviceConfigs\iOSWebConfig.json"/>
+    <test name="Web Test">
+
+        <classes>
+            <class name="mobile.SimpleWebTests"/>
+        </classes>
+
+    </test>
+</suite>

@@ -38,15 +38,11 @@ public class Driver {
     private static String APP_ACTIVITY;
 
     protected void getConfig(String pathToConfig) throws FileNotFoundException {
-        System.out.println("Config: " + pathToConfig); //Write current config file name to console
-        JsonObject jDevice = new JsonParser().parse(new FileReader
-                (pathToConfig)).getAsJsonObject();
+        JsonObject jDevice = new JsonParser().parse(new FileReader(pathToConfig)).getAsJsonObject();
         device = new Gson().fromJson(jDevice, Device.class);
 
         AUT = device.aut == null ? null :  PATH_TO_RESOURCES + device.aut;
-        System.out.println("aut=" + AUT);
         SUT = device.sut == null ? null : HTTPS_PREFIX + device.sut;
-        System.out.println("sut=" + SUT);
         TEST_PLATFORM = device.test_platform;
         DRIVER = device.driver;
         DEVICE_NAME = device.device_name;

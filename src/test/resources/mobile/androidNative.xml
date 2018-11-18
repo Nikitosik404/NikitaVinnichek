@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Native Test for android device" verbose="1">
+    <parameter name="pathToConfig" value="src\main\resources\deviceConfigs\androidNativeConfig.json"/>
+    <test name="Native Test">
+
+        <classes>
+            <class name="mobile.SimpleNativeTests" />
+        </classes>
+
+    </test>
+</suite>
