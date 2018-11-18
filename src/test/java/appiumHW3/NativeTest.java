@@ -1,21 +1,18 @@
-package appiumHW2;
+package appiumHW3;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import setup.PropertyFile;
+import setup.Hooks;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Test(groups = "native")
 public class NativeTest extends Hooks {
-    protected NativeTest() {
-        super(PropertyFile.NATIVE);
-    }
 
-    @Test(description = "Go to the \"Add Contact\" screen and check it content")
+    @Test(description = "Check contact manager application", groups = "native.android")
     public void simplestAddContactScreenTest() throws Exception {
 
         String app_package_name = "com.example.android.contactmanager:id/";

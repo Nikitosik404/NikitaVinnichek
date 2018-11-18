@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Android web" verbose="1" >
+    <test name="Android web tests">
+
+        <groups>
+            <run>
+                <include name="web.android"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="appiumHW3.WebTest"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Android native" verbose="1" >
+    <test name="Android native tests">
+
+        <groups>
+            <run>
+                <include name="native.android"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="appiumHW3.NativeTest"/>
+        </classes>
+    </test>
+</suite>

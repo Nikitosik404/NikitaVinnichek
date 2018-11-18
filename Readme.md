@@ -1,6 +1,6 @@
 Homework #2 
 
-Тесты находятся в дирректории NikitaVinnichek\src\test\java\appiumHW2
+Тесты находятся в дирректории NikitaVinnichek\src\test\java\appiumHW3
 
 *1. Rewrite (complete) Driver using “singleton” pattern. Are there any advantages?
 

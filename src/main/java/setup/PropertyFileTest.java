@@ -6,16 +6,17 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class TestProperties {
+public class PropertyFileTest {
+
     private String propertyFileName;
     private Properties testProperties = new Properties();
 
-    protected void setPropertyFileName(PropertiesFile propertyFileName) {
+    protected void setPropertyFileName(PropertiesFile propertyFileName)  {
         this.propertyFileName = propertyFileName.getName();
     }
 
     private Properties getTestProperties() throws IOException {
-        try (FileInputStream inputStream = new FileInputStream( "src/main/resources/appiumHW/" + propertyFileName)) {
+        try (FileInputStream inputStream = new FileInputStream( "src/main/resources/mobile/" + propertyFileName)) {
             testProperties.load(inputStream);
             return testProperties;
         }
